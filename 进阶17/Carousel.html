@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>轮播</title>
+  <style>
+* {padding: 0;margin: 0;}
+#layout {
+  margin: 0 auto;
+  margin-top: 50px;
+  position: relative;
+  overflow: hidden;
+  width: 350px;
+  height: 250px;
+}
+.pic-ul {
+  display: flex;
+  position: relative;
+  height: 250px;
+  /* left:0; */
+  /* transition: all 1s; */
+}
+.pic-li {
+  list-style: none;
+}
+.pic-img {
+  width: 350px;
+  height: 250px;
+}
+span {
+  cursor: default;
+  border-radius: 50%;
+  border: 1px solid lightcyan;
+  position: absolute;
+  top: 50%;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 20px;
+  color: lightcyan;
+  opacity: 0.7;
+}
+span:hover {
+  background-color: lightcyan;  
+  box-shadow: 1px 1px 2px  #000;
+  color: darkorange;
+}
+.previous {
+  left: 5px;
+}
+.next {
+  right: 5px;
+}
+
+.dot-ul {
+  position: relative;
+  list-style: none;
+  display: flex;
+  width: 35%;
+  margin: 0 auto;
+  justify-content: space-between;
+  bottom: 10px;
+}
+.dot-li {
+  width: 20px;
+  background-color: darkgray;
+  border-radius: 5px;
+  height: 5px;
+}
+.dot-active {
+  background-color: lightgoldenrodyellow;
+}
+  </style>
+</head>
+<body>
+  <div id="layout">
+    <ul class="pic-ul">
+      <li class="pic-li a1"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/29.jpg" alt="" class="pic-img"></a></li>
+      <li class="pic-li a2"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/19.jpg" alt="" class="pic-img"></a></li>
+      <li class="pic-li a3"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/18.jpg" alt="" class="pic-img"></a></li>
+      <li class="pic-li a4"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg" alt="" class="pic-img"></a></li>
+      <li class="pic-li a5"><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg" alt="" class="pic-img"></a></li>
+    </ul>
+    <span class="previous"><</span>
+    <span class="next">></span>
+    <ul class="dot-ul">
+      <li class="dot-li dot-active"></li>
+      <li class="dot-li"></li>
+      <li class="dot-li"></li>
+      <li class="dot-li"></li>
+      <li class="dot-li"></li>
+    </ul>
+  </div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src= "carousel.js"></script>
+</body>
+</html>

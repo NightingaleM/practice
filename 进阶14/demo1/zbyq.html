@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>侧边栏效果</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		li {
+			list-style: none;
+		}
+		#sidebar {
+			margin-left: 50px;
+			margin-top: 50px;
+/*			max-width: 200px;*/
+		}
+		.ul-box {
+			width: 200px;
+			padding: 5px;
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 2px;
+			background-color: yellow;
+			cursor: pointer;
+		}
+		.big-box{
+			display: flex;
+			align-items: top;
+		}
+		.commodity-box {
+			position: absolute;
+			left: 250px;
+			display: none;
+			max-width: 200px;
+			display: show;
+			background-color: lightgreen;
+			flex-wrap: wrap;
+		}
+		.show {
+			display: flex;
+		}
+		.commodity-box>li {
+			padding: 10px 20px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="sidebar">
+		<ul id="sidebar-ul">
+			<div class="big-box">
+				<div class="ul-box">
+					<li class="li-box">珠宝玉器1</li>
+					<span>></span>
+				</div>
+				<ul class="commodity-box">
+					<li>宝石1</li>
+					<li>宝石2</li>
+					<li>宝石3</li>
+				</ul>
+				
+			</div>
+			
+			<div class="big-box">
+				<div class="ul-box">
+					<li class="li-box">珠宝玉器2</li>
+					<span>></span>
+				</div>
+				<ul class="commodity-box">
+					<li>宝石1</li>
+					<li>宝石2</li>
+					<li>宝石3</li>
+					<li>宝石4</li>
+					<li>宝石5</li>
+				</ul>
+				
+			</div>
+			
+			<div class="big-box">
+				<div class="ul-box">
+					<li class="li-box">珠宝玉器3</li>
+					<span>></span>
+				</div>
+				<ul class="commodity-box">
+					<li>宝石1</li>
+					<li>宝石2</li>
+					<li>宝石3</li>
+					<li>宝石4</li>
+				</ul>
+				
+			</div>
+		
+			<div class="big-box">
+				<div class="ul-box">
+					<li class="li-box">珠宝玉器4</li>
+					<span>></span>
+				</div>
+				<ul class="commodity-box">
+					<li>宝石1</li>
+					<li>宝石2</li>
+					<li>宝石3</li>
+					<li>宝石4</li>
+					<li>宝石5</li>
+				</ul>
+				
+			</div>
+			
+			<div class="big-box">
+				<div class="ul-box">
+					<li class="li-box">珠宝玉器5</li>
+					<span>></span>
+				</div>
+				<ul class="commodity-box">
+					<li>宝石1</li>
+					<li>宝石2</li>
+					<li>宝石3</li>
+					<li>宝石4</li>
+					<li>宝石5</li>
+				</ul>
+				
+			</div>
+	
+
+		</ul>
+	</div>
+
+
+<script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
+<script src='zbyq.js'></script>
+</body>
+</html>

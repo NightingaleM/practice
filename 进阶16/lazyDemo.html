@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>懒加载</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        ul {
+            width: 1000px;
+            display: flex;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        ul>li {
+            list-style: none;
+        }
+        img {
+            width: 350px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="layout">
+        建议将网速调成2G或3G模式
+        <ul>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/6.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/7.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/8.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/9.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/10.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/12.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/14.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="target" data-src="http://via.placeholder.com/480x360?text=The target 1"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/15.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/16.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/17.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/18.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="target2" data-src="http://via.placeholder.com/480x360?text=The target 2"></li>            
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/19.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/20.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/21.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/22.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/27.jpg"></li>
+            <li><img src="http://via.placeholder.com/350x200" alt="" class="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/28.jpg"></li>
+        </ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    var $images = $('img')
+
+    
+    $(window).on('load',function(){
+        isShowLog($('.target'))
+        showOneTimeLog($('.target2'))
+        $images.each(function(){
+            if( isShow($(this)) && !isLoaded($(this))){
+                loadImg($(this))
+            }
+        })
+    }).on('scroll',function(){
+        isShowLog($('.target'))
+        showOneTimeLog($('.target2'))
+        $images.each(function(){
+            if( isShow($(this)) && !isLoaded($(this))){
+                loadImg($(this))
+            }
+        })
+    })
+
+
+    function isShowLog($img){
+        if (isShow($img)){
+            console.log('target 1 is show')
+            return true;
+        }
+        console.log('false')
+        return false;
+    }
+
+    function showOneTimeLog($img){
+        if (!$img.hasClass('showNow') && isShow($img)){
+            $img.addClass('showNow')
+            console.log('|target 2 is show|')
+            return true;
+        }
+        return false;
+    }
+/**********************其他元素结果不打印函数***********************/
+    function isShow($img){
+        var scrollTop  = $(window).scrollTop()
+        var windowHeight = $(window).height()
+        var imgTop = $img.offset().top
+        var imgHeight = $img.outerHeight(true)
+        if (imgTop <= scrollTop + windowHeight && scrollTop < imgTop + imgHeight){
+            return true;
+        }
+        return false;
+    }
+/********************************************************************/
+    function isLoaded($img){
+        var $imgRealSrc = $img.attr('data-src')
+        var $imgLazySrc = $img.attr('src')
+        if ($imgRealSrc === $imgLazySrc){
+            return true;
+        }
+        return false;
+    }
+    function loadImg($img){
+        var $imgRealSrc = $img.attr('data-src')
+        $img.attr('src',$imgRealSrc)
+        
+    }
+    </script>
+
+</body>
+</html>

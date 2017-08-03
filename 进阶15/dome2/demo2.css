@@ -1,0 +1,46 @@
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+#show-box {
+	/*border: 1px solid greenyellow;*/
+	width: 70%;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+.show-li {
+	margin: 5px;
+	border-radius: 4px;
+	list-style: none;
+	padding: 5px;
+	border: 1px solid greenyellow;
+}
+.show-li:hover {
+	background-color: greenyellow;
+	color: darkorange;
+}
+#add-more-box {
+	border: 1px solid greenyellow;
+	border-radius: 4px;
+	margin: 0 auto;	
+	width: 100px;
+	height: 43px;
+	position: relative;
+	text-align: center;
+}
+img {
+	height: 100%;
+	position: absolute;
+	display: none;
+	top:0;
+	left: 30%;
+}
+a {
+	display: block;
+	padding-top: 9px;
+	/*padding: 10px;	*/
+	text-decoration: none;
+	color: greenyellow;
+}

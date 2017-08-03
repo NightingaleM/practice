@@ -1,0 +1,217 @@
+<meta charset="utf-8"/>
+
+<script>
+console.log("-------Math任务---1---2--------")
+var numArr1=[-9,-5,5,-6,1,3,4,7,9,2,3]
+
+function minAndMax1(arr){
+  var max = Math.max.apply(null, arr)
+  var min = Math.min.apply(null, arr)
+  var numb = Math.floor(min+Math.random()*(max-min))
+  return numb;
+}
+console.log("不包括max："+ minAndMax1(numArr1))
+
+function minAndMax2(arr){
+  var max = Math.max.apply(null, arr)
+  var min = Math.min.apply(null, arr)
+  var numb = Math.floor(min+Math.random()*(max-min+1))
+  return numb;
+}
+console.log("包括max：" + minAndMax2(numArr1))
+
+console.log("-------Math任务---3--------")
+function getRandStr(len){
+  var str = "0123456789qwertyuioplkjhgfdsazxcvbnmQAZWSXEDCRFVTGBYHNUJMIKLOP"
+  var newstr = ''
+  for(var i = 0; i < len; i++){
+    var randomNum = Math.floor(Math.random()*62)
+    newstr = str[randomNum] + newstr
+  }
+  return newstr;
+}
+var str = getRandStr(10); // 0a3iJiRZap
+console.log(str)
+
+console.log("-------Math任务---4--------")
+function getRandIP(){
+  var ip = []
+  for (var i = 0; i < 4; i++){
+    var randomNum = Math.floor(Math.random()*226)
+    ip[i] = randomNum
+  }
+  ip = ip.join('.')
+  return ip;
+}
+var ip = getRandIP()
+console.log(ip) // 10.234.121.45
+
+console.log("-------Math任务---5--------")
+function getRandColor(){
+  var colorNum = "0123456789abcdef"
+  var color = []
+  for( var i = 1; i < 7; i++){
+    var randomNum = Math.floor(Math.random()*16)
+    color[i] = colorNum[randomNum]
+  }
+  color = "#" + color.join('')
+  return color;
+}
+var color = getRandColor()
+console.log(color)   // #3e2f1b
+
+console.log("-------数组任务----1-------")
+var spliceArr = [0,1,2,3]
+console.log("原数组   " + spliceArr)
+function arrpush(arr,num){
+  var len = arr.length
+  var newArr = []
+  for(var i = 0; i < len; i++){
+    newArr[i] = arr[i]
+  }
+  newArr.splice(len, 0, num)
+  return newArr;
+}
+console.log("这是push的方法   " + arrpush(spliceArr,5))
+
+
+
+function arrpop(arr){
+  var len = arr.length
+  var newArr = []
+  for(var i = 0; i < len; i++){
+    newArr[i] = arr[i]
+  }
+  newArr.splice(len-1, 1)
+  return newArr;
+}
+console.log("这是pop的方法   " + arrpop(spliceArr))
+
+
+function arrshift(arr){
+  var len = arr.length
+  var newArr = []
+  for(var i = 0; i < len; i++){
+    newArr[i] = arr[i]
+  }
+  newArr.splice(0,1)
+  return newArr;
+}
+console.log("这是shift的方法   " + arrshift(spliceArr))
+
+function arrunshift(arr,num){
+  var len = arr.length
+  var newArr = []
+  for(var i = 0; i < len; i++){
+    newArr[i] = arr[i]
+  }
+  newArr.splice(0,0,num)
+  return newArr;
+}
+console.log("这是unshift的方法   " + arrunshift(spliceArr,5))
+
+console.log("-------数组任务----2-------")
+
+function squareArr(arr){
+  for(var i = 0; i < arr.length; i++){
+    arr[i] = Math.pow(arr[i],2)
+  }
+}
+var arr = [2, 4, 6]
+squareArr(arr)
+console.log(arr) // [4, 16, 36]
+
+console.log("-------数组任务----3-------")
+
+function filterPositive(arr){
+  var newArr = []
+  var k = 0;
+  for(var i = 0; i < arr.length; i++){
+    if (typeof arr[i] == "number"){
+      if (arr[i] > 0){
+        newArr[k] = arr[i]
+        k++
+      }
+    }
+  }
+  return newArr;
+}
+var arr = [3, -1, 2, '饥人谷', true]
+var newArr = filterPositive(arr)
+console.log(newArr)
+console.log(arr)
+
+console.log("-------Date任务----1-------")
+function getChIntv(day){
+  var manyTime = Date.parse(day) - Date.now()
+  var day = parseInt(manyTime/1000/60/60/24)
+  var hour = parseInt(manyTime/1000/60/60%24)-8
+  var minute = parseInt(manyTime/1000/60%60)
+  var second = parseInt(manyTime/1000%60)
+  return "距离2017年除夕还有 "+day+" 天 "+hour+" 小时 "+minute+" 分钟 "+second+" 秒 ";
+
+}
+var str = getChIntv("2018-02-15");
+console.log(str);  
+
+console.log("-------Date任务----2-------")
+function getChsDate(day){
+  day = day.split('-')
+  var year = ['零','一','二','三','四','五','六','七','八','九']
+  var mAndDay = {
+    01:'一',    02:'二',    03:'三',
+    04:'四',    05:'五',    06:'六',
+    07:'七',    08:'八',    09:'九',
+    10:'十',    11:'十一',    12:'十二',
+    13:'十三',    14:'十四',    15:'十五',
+    16:'十六',    17:'十七',    18:'十八',
+    19:'十九',    20:'二十',    21:'二十一',
+    22:'二十二',    23:'二十三',    24:'二十四',
+    25:'二十五',    26:'二十六',    27:'二十七',
+    28:'二十八',    29:'二十九',    30:'三十',
+    31:'三十一'
+  }
+  day[0] = day[0].split('')
+  for(var y = 0; y < 4; y++){
+    day[0][y] = year[day[0][y]]
+  }
+  day[0] = day[0].join('')
+  day[1] = mAndDay[parseInt(day[1])]
+  day[2] = mAndDay[parseInt(day[2])]
+  return day[0] + '年 ' + day[1] + '月 ' + day[2] +'日'
+}
+var newday1 = getChsDate('2017-05-02');
+var newday2 = getChsDate('2017-12-27');
+console.log(newday1);
+console.log(newday2);
+
+console.log("-------Date任务----3-------")
+
+function friendlyDate(time){
+  var now = Date.now()
+  var manyTime = now - time
+  switch (true){
+    case manyTime < 60000:
+      return parseInt(manyTime/1000)+' 秒前'
+    case 60000 <= manyTime && manyTime < 3600000:
+      return parseInt(manyTime/1000/60)+' 分钟前'
+    case 3600000 <= manyTime && manyTime < 8.64e7:
+      return parseInt(manyTime/1000/60/60)+' 小时前'
+    case 8.64e7 <= manyTime && manyTime < 2.6784e9:
+      return parseInt(manyTime/1000/60/60/24)+' 天前'
+    case 2.6784e9 <= manyTime && manyTime < 3.1536e10:
+      return parseInt(manyTime/1000/60/60/24/31)+' 月前'
+    case 3.1536e10 <= manyTime:
+      return '上古前'
+  }
+}
+var str = friendlyDate( Date.now()-Math.floor(Math.random()*3.1537e10) )
+var str2 = friendlyDate( Date.now()-Math.floor(Math.random()*8.65e7) )
+var str3 = friendlyDate( Date.now()-Math.floor(Math.random()*2.6785e9) )
+var str4 = friendlyDate( Date.now()-Math.floor(Math.random()*3900000) )
+console.log(str)
+console.log(str2)
+console.log(str3)
+console.log(str4)
+
+</script>

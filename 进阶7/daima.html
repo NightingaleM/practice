@@ -1,0 +1,122 @@
+<meta charset="utf-8">
+<script>
+console.log("--------去除字符串两端的空白符--------trim(str)-----")
+var str = '  jirengu  '
+console.log(str)
+function trim(str){
+  str = str.replace(/^\s*|\s*$/g,'')
+  return str;
+}
+console.log(trim(str))
+
+
+console.log("--------检测邮箱地址--------isEmail(str)-----")
+
+function isEmail(str){
+  if (/^\w+-*\w*-*\w*-*\w*@{1}\w+-*\w*\.?\w+$/.test(str)){//一个BUG，如果这个人的标识符中有三段以上的中横线，将不能识别，
+    return "Your email address: " + str + "    This is a legitimate E-mail."
+  }else{
+    return "Your email address: " + str + "    Please enter valid email address."
+  }
+}
+var emailStr1 = "jirengu@163.cn"
+var emailStr2 = "ji-ren-gu@16-3.com"
+var emailStr3 = "jirengu@@163.com"
+var emailStr4 = "jirengu@jirengu"
+console.log(isEmail(emailStr1))  
+console.log(isEmail(emailStr2))  
+console.log(isEmail(emailStr3))  
+console.log(isEmail(emailStr4)) 
+
+
+console.log("------判断是否是手机号---------isPhoneNum(str)-----------")
+console.log("查了一下，中国手机号好像只有13*、14*、15*和18*开头的")
+function isPhoneNum(str){
+  if ( /^0?-?(13\d|14\d|15\d|18\d)-?\d{4}-?\d{4}$/.test(str)){
+    return "right"
+  }else{
+    return "illegal"
+  }
+}
+var phoneNum1 = '18773213151'
+var phoneNum2 = '0-18773213151'
+var phoneNum3 = '11773213151'
+var phoneNum4 = '187-7321-3151'
+console.log(phoneNum1 + '  is  ' + isPhoneNum(phoneNum1))
+console.log(phoneNum2 + '  is  ' + isPhoneNum(phoneNum2))
+console.log(phoneNum3 + '  is  ' + isPhoneNum(phoneNum3))
+console.log(phoneNum4 + '  is  ' + isPhoneNum(phoneNum4))
+
+
+console.log("------判断是否是合法的用户名---------isValidUsername(str)-----------")
+
+function isValidUsername(str){
+  if ( /^\w{6,}$/.test(str)){
+    if( /^\w{21}$/.test(str)){
+      return 'illegal'
+    }else{
+      return 'right'
+    }
+  }else{
+    return 'illegal'
+  }
+}
+var userName1 = 'Jirengu'
+var userName2 = 'jirengu_123'
+var userName3 = '    Jirengu'
+var userName4 = 'zhejuhuayouuuuu21gezi'
+console.log(userName1 + '  is  ' + isValidUsername(userName1))
+console.log(userName2 + '  is  ' + isValidUsername(userName2))
+console.log(userName3 + '  is  ' + isValidUsername(userName3))
+console.log(userName4 + '  is  ' + isValidUsername(userName4))
+
+
+console.log("------判断是否是合法的密码---------isValidPassword(str)-----------")
+
+function isValidPassword(str){
+  if(str.length < 6 || str.length > 20){
+    return '  长度在6-20之间';
+  }
+  if(/[^a-zA-Z0-9_]/.test(str)){
+    return '  只能由大写字母小写字母数字以及下划线组成';
+  }
+  if(/^[a-z]+$|^[A-Z]+$|^[0-9]+$|^_+$/.test(str)){
+    return '  至少包含两种格式';
+  }
+  return '  pass';
+}
+
+var password1 = 'jirengu'
+var password2 = 'JiRenGu'
+var password3 = '9jirengu123'
+var password4 = 'ji_ren_gu'
+var password5 = 'ji-ren-gu'
+var password6 = 'zhejuhuayouuuuu21gezi'
+var password7 = 'ji'
+
+console.log(password1  + isValidPassword(password1))
+console.log(password2  + isValidPassword(password2))
+console.log(password3  + isValidPassword(password3))
+console.log(password4  + isValidPassword(password4))
+console.log(password5  + isValidPassword(password5))
+console.log(password6  + isValidPassword(password6))
+console.log(password7  + isValidPassword(password7))
+
+
+console.log("------得到如下字符串的所有颜色-------------")
+
+var re = /#[0-9a-fA-F]{6}/g
+var subj = "color: #121212; background-color: #AA00ef; width: 12px; bad-colors: f#fddee "
+console.log( subj.match(re) )  // ['#121212', '#AA00ef']
+
+
+console.log("------得到如下字符串的所有颜色-------------")
+
+var str = 'hello  "hunger" , hello "world"';
+var pat =  /".*"/g;
+console.log(str.match(pat));
+console.log('以上是贪婪模式下的结果，贪婪模式会尽可能多的匹配')//[""hunger" , hello "world""]这是贪婪模式下的结果，贪婪模式会尽可能多的匹配
+var newPat = /".*?"/g;
+console.log('修改成'+newPat);
+console.log(str.match(newPat));
+</script>

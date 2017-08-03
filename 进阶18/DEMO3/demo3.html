@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>瀑布流3</title>
+</head>
+
+<body>
+  <div id="layout">
+
+  <img src="http://via.placeholder.com/200x253/7c0752?text=1" style="top: 0px; left: 0px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x234/710ae3?text=2" style="top: 0px; left: 220px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x334/e19ad2?text=3" style="top: 0px; left: 440px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x334/491498?text=4" style="top: 0px; left: 660px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x355/bd9e25?text=5" style="top: 0px; left: 880px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x293/973d23?text=6" style="top: 0px; left: 1100px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x342/b2bf15?text=7" style="top: 234px; left: 220px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x365/5b5130?text=8" style="top: 253px; left: 0px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x321/6c6f3d?text=9" style="top: 293px; left: 1100px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x386/2cf3be?text=10" style="top: 334px; left: 440px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x218/02b418?text=11" style="top: 334px; left: 660px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x371/127ca6?text=12" style="top: 355px; left: 880px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x252/6bfefa?text=13" style="top: 552px; left: 660px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x234/9e481a?text=14" style="top: 576px; left: 220px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x318/d6f57a?text=15" style="top: 614px; left: 1100px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x388/d85299?text=16" style="top: 618px; left: 0px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x264/3d344a?text=17" style="top: 720px; left: 440px; opacity: 1;">
+  <img src="http://via.placeholder.com/200x261/caa7ef?text=18" style="top: 726px; left: 880px; opacity: 1;">
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+  var containerWidth = $('#layout').width()//容器宽度
+  var itemArr = []
+  var $images = $('#layout img')
+  var imgWidth = $('#layout img').width()
+  
+  var colLength = parseInt(containerWidth/imgWidth,10)
+  for (let key = 0; key < colLength; key++){
+    if(itemArr[key]===undefined){
+   itemArr[key] = 0
+    }
+  }
+  for(let i = 0; i < $images.length; i++){
+    var minValue = Math.min.apply(null, itemArr)
+    var minIndex = itemArr.indexOf(minValue)
+    $images.eq(i).animate({
+      top: itemArr[minIndex],
+      left: $images.eq(i).outerWidth(true)*minIndex,
+      opacity: 1
+    })
+    itemArr[minIndex] += $images.eq(i).outerHeight(true)
+  }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+1. 以下代码的输出结果是?为什么?
+```
+console.log(1+1);    	 //2
+console.log("2"+"4"); 	 //'24' 相加时有字符串得字符串
+console.log(2+"4");  	 //'24'  相加时有字符串得字符串
+console.log(+"4");		 //4
+```
+2. 以下代码的输出结果是?
+```
+var a = 1;  
+a+++a;  	//2
+typeof a+2;	//4
+```
+3. 以下代码的输出结果是? 为什么
+```
+ var a = 1;
+ var b = 3;
+ console.log( a+++b );//4  相当于  (a++)+b  a在执行完后+1变为 2
+```
+4. 遍历数组，把数组里的打印数组每一项的平方
+```
+ var arr = [3,4,5]
+ for(var i=0; i<arr.length; i++){
+     console.log(arr[i]*arr[i])
+ }
+```
+5. 遍历 JSON, 打印里面的值
+```
+var obj = {
+ name: 'hunger', 
+ sex: 'male', 
+ age: 28 
+}
+for(var i in obj){
+    console.log(obj[i]);
+}
+```
+6. 以下代码输出结果是? 为什么 （选做题目）
+```
+var a = 1, b = 2, c = 3;
+var val = typeof a + b || c >0
+console.log(val) 
+/*
+var = typeof a+b||c>0
+    ="number"+b||c>0
+    ="number2"||c>0
+    ="number2"||true
+    ="number2"
+*/
+
+var d = 5;
+var data = d ==5 && console.log('bb')
+console.log(data)
+
+var d = 5;
+var data = true && undefined
+console.log(data)
+/*
+data = d == 5 && bb  由于console.log打印出来的是bb不是“bb” 以至于浏览器找不到bb的定义所以bb为undefined
+     = d == 5 && undefined
+     = true && undefined
+     = undefined
+*/
+var data2 = d = 0 || console.log('haha')
+console.log(data2)
+/*
+data2 = d = 0 || haha 由于console.log打印出来的是haha不是“haha” 以至于浏览器找不到haha的定义所以haha为undefined
+      = d = 0 || undefined
+      = d = undefined
+      = undefined
+*/
+var x = !!"Hello" + (!"world", !!"from here!!");
+console.log(x)
+/*
+x = true + (false, true)
+  = true + true
+  = 1 + 1
+  = 2
+*/
+```

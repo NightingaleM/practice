@@ -1,0 +1,169 @@
+<meta charset="utf-8"/>
+
+<script>
+
+
+var prod = {
+    name: '女装',
+    styles: ['短款', '冬季', '春装']
+};
+function getTplStr(data){
+  var str = []
+  var key = 0
+  for ( key in data ){
+    if ( typeof data[key] == "object"){
+      for(var i = 0; i < data[key].length; i++){
+        str.push('<dd>' + data[key][i] + '</dd>')
+      }
+    }else{
+      str.push('<dt>' + data[key] + '</dt>')
+    }
+  }
+  str.splice(0,0,'<dl class="product">')
+  str.splice(str.length,0,'</dl>')
+  console.log(str)
+  return str.join('')
+}
+
+function getTplStr2(data){
+  var product='<dl class="product">\n'
+  var productEnd='</dl>'
+  var dd=""
+  for(var key in data){
+    if(key == "name"){
+      var dt = "\t" + "<dt>" + data[key] + "</dt>" + "\n"
+    }
+    // if(key == "styles")
+    if (data[key] instanceof Array){
+      for(var i = 0; i < data[key].length; i++){
+        dd = "\t" + "<dd>" + data[key][i] + "</dd>"+ "\n" + dd
+      }
+    }
+  }
+  return product + dt + dd + productEnd ;
+};
+var result = getTplStr(prod);  //result为下面的字符串
+var result2 = getTplStr2(prod);  //result为下面的字符串
+console.log(result)
+console.log(result2)
+
+
+console.log("--------------------------")
+var palindromicstr1 = "abba"
+var palindromicstr2 = "abaa"
+var palindromicstr3 = "abcba"
+var palindromicstr4 = "abcaa"
+var palindromicstr5 = "a"
+
+function isPalindromic(str){
+  var i = 0;
+  var len = str.length
+  if(len == 1){
+    return "Jast one letter"
+  }
+  if(len%2==0){
+    for(i = 0; i<len/2; i++){
+      if(str[i] != str[len-1-i]){
+        return str + ' is not a palindromic'
+      }
+    }
+    return str + " is a palindromic"
+  }
+  if(str.length%2 == 1){
+     for(i = 0; i<(len-1)/2; i++){
+      if(str[i] != str[len-1-i]){
+        return str + ' is not a palindromic'
+      }
+    }
+      return str + " is a palindromic"
+  }
+}
+
+function isRevers(str){
+  var len = str.length
+  if(len == 1){
+    return "Jast one letter"
+  }
+  if(str === str.split('').reverse().join('')){
+    return str + " is a palindromic"
+  }else{
+    return str + ' is not a palindromic'
+  }
+}
+
+console.log(isPalindromic(palindromicstr1))
+console.log(isPalindromic(palindromicstr2))
+console.log(isPalindromic(palindromicstr3))
+console.log(isPalindromic(palindromicstr4))
+console.log(isPalindromic(palindromicstr5))
+console.log("-----------------")
+console.log(isRevers(palindromicstr1))
+console.log(isRevers(palindromicstr2))
+console.log(isRevers(palindromicstr3))
+console.log(isRevers(palindromicstr4))
+console.log(isRevers(palindromicstr5))
+
+var longstr = "If you miss the train I'm on,You will know that I am gone."
+function mostLetter(str){
+  str = str.split('')
+  var dict = {}
+  for(var i = 0; i < str.length; i++){
+    if( dict[str[i]]){
+      ++dict[str[i]]
+    }else{
+      dict[str[i]] = 1
+    }
+  }
+  var max = 0;
+  var maxLetter;
+  for(var key in dict){
+    if ( key == " "){
+      continue
+    }
+    if ( dict[key] > max ){
+      max = dict[key]
+      maxLetter = key
+    }
+  }
+  return "出现最多的字母是 '" + maxLetter + "',它一共出现了 " +　max + " 次。";
+}
+console.log(mostLetter(longstr))
+
+
+var str7 = 'my-short-string'
+function camelize(str){
+  str = str.split('')
+  for(var i = 0; i < str.length; i++){
+    if ( str[i] == "-"){
+      str.splice(i,1)
+      str[i] = str[i].toUpperCase();
+    }
+  }
+  return str.join('');
+}
+console.log(camelize(str7))
+
+function ucFirst(str){
+  str = str.split('')
+  str[0] = str[0].toUpperCase()
+  return str.join('');
+}
+console.log(ucFirst(str7))
+
+function truncate(str,maxlength){
+  str = str.split('')
+  if ( str.length > maxlength ){
+    str.splice(maxlength, str.length-maxlength,"……")
+  }
+  return str.join('');
+}
+console.log(truncate("hello, this is hunger valley,", 10))
+console.log(truncate("hello world", 20))
+</script>
+
+<dl class="product">
+    <dt>女装</dt>
+    <dd>短款</dd>
+    <dd>冬季</dd>
+    <dd>春装</dd>
+</dl>

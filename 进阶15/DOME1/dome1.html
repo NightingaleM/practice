@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JQuery实现操作</title>
+	<style>
+		pre {
+			padding: 5px;
+			width: 40%;
+			margin: 0 auto;
+			border: 1px solid;
+			overflow: auto;
+		}
+		#dome1 {
+			border: 1px solid;
+			height: 1000px;
+			width: 70%;
+			margin: 0 auto;
+			margin-top: 13px;
+			position: relative;
+		}
+		#btn {
+			border: 1px solid;
+			padding: 10px;
+			margin: 30px 20px;
+			background-color: #fff;
+		}
+		span {
+			font-size: 8px;
+		}
+		#showscrollTop {
+			width: 10%;
+   			white-space: nowrap;
+   			overflow: hidden;
+  			text-overflow: ellipsis;
+			position: fixed;
+			top: 50px;
+			left: 45px;
+			border: 1px solid;
+			padding: 10px;
+		}
+		#change-color-div {
+			width: 150px;
+			height: 150px;
+			border: 1px solid;
+			margin: 30px 20px;
+			text-align: center;
+			font-size: 15px;
+		}
+		#input-show-box,
+		#select-box {
+			margin: 30px 20px;
+		}
+		.input-show {
+			border: 1px solid;
+			width: 150px;
+			height: 150px;
+		}
+		.blueBorder {
+			border: 3px solid blue;
+		}
+	</style>
+</head>
+<body>
+	<pre>
+1.当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色
+2.当窗口滚动时，获取垂直滚动距离
+3.当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色
+4.当鼠标激活 input 输入框时让输入框边框变为蓝色，
+	当输入框内容改变时把输入框里的文字小写变为大写，
+		当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字
+5.当选择 select 后，获取用户选择的内容</pre>
+
+
+<div id="dome1">
+	<button id="btn">点我变色</button>
+
+	<div id="change-color-div">
+		<p>放上鼠标红背景</p>
+		<p>移开鼠标为白色</p>
+	</div>
+
+	<div id="input-show-box">
+		<input type="text" placeholder="写点东西" value="">
+		<div class="input-show"></div>
+	</div>
+
+	<div id="select-box">
+		<select name="car">
+			<option value="Saab">萨博</option>
+			<option value="Bmw">宝马</option>
+			<option value="Maserati">玛莎拉蒂</option>
+			<option value="Eleven">十一路</option>
+		</select>
+		<div class="input-show"></div>
+	</div>
+</div>
+
+<div id="showscrollTop">
+	<span>滚动后显示垂直滚动距离</span>
+	<p class="show">0</p>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='demo1.js'></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+#addMore {
+	padding: 20px;
+	padding-top: 1px;
+	margin: 0 auto;
+	width: 90%;
+	height: 90%;
+	background-color: #fff;
+	overflow: auto;
+}
+
+#addMore>ul>li {
+	padding: 5px;
+	border: 1px solid #ccc;
+	list-style: none;
+	margin-top: 13px;
+}
+#addMore>ul>li:hover {
+	background-color: green;
+	color: #fff;
+}
+#add {
+	display: block;
+	margin: 0 auto;
+	margin-top: 13px;
+	padding: 8px 5px;
+	width: 90px;
+	border: 1px solid lightgreen;
+	border-radius: 3px;
+	text-align: center;
+	color: lightgreen;
+	text-decoration: none;
+}

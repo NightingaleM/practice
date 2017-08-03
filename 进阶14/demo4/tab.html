@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滑动TAB</title>
+	<style>
+	* {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
+	.layout {
+		width: 60%;
+		min-width: 700px;
+		margin: 0 auto;
+		position: relative;
+		border: 1px solid #ccc;
+	}
+	.tab {
+		display: flex;
+	}
+	.tabs {
+		padding: 5px;
+		color: #fff;
+		background-color: lightgreen;
+		list-style: none;
+		text-align: center;
+		flex-grow: 1;
+	}
+	.tabs:nth-child(2){
+		border-left: 1px solid #ccc;
+		border-right: 1px solid #ccc;
+
+	}
+	.active-tab {
+		background-color: green;
+	}
+	.show-boxs {
+		width: 100%;
+		height: 200px;
+		display: none;
+	}
+	.active-show {
+		display: block;
+	}
+	</style>
+</head>
+<body>
+	<div class="layout">
+		<ul class="tab">
+			<li class="tabs active-tab">tab 1</li>
+			<li class="tabs">tab 2</li>
+			<li class="tabs">tab 3</li>
+		</ul>
+
+		<div class="show-boxs active-show">qqq</div>
+		<div class="show-boxs">www</div>
+		<div class="show-boxs">eee</div>
+	</div>
+
+	
+	<div class="layout">
+		<ul class="tab">
+			<li class="tabs active-tab">tab 1</li>
+			<li class="tabs">tab 2</li>
+			<li class="tabs">tab 3</li>
+		</ul>
+
+		<div class="show-boxs active-show">qqq</div>
+		<div class="show-boxs">www</div>
+		<div class="show-boxs">eee</div>
+	</div>
+	<script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
+	<script src='tab.js'></script>
+</body>
+</html>

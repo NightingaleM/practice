@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>news</title>
+<style>
+  .container{
+    width: 900px;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <ul class="news">
+      <li>高考加油</li>
+      <li>欢乐颂 </li> 
+      <li>厉害了小姐姐</li>
+    </ul>
+    <button class="change">换一组</button>
+  </div>
+  
+<script>
+
+  $('.change').addEventListener('click',function(){
+    var xhr = new XMLHttpRequest();
+    xhr.open('get','/getNews',true);
+            console.log(xhr)
+    xhr.onload = function(){
+      console.log(arguments[0])
+      if(xhr.readyState === 4 && xhr.status === 200){
+
+        appendHtml(JSON.parse(xhr.responseText))
+      }
+    }
+
+    xhr.send();
+  })
+
+  function appendHtml(news){
+    var html = '';
+    for (var i = 0; i < news.length; i++){
+      html += '<li>' + news[i] + '</li>';
+    }
+    console.log(html);
+    $('.news').innerHTML = html;
+  }
+
+  function $(id){
+    return document.querySelector(id);
+  }
+</script>
+
+
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>任务模板</title>
+<link rel="stylesheet" href="cssM.css">
+<link rel="stylesheet" href="addmore.css">
+</head>
+<body>
+	<div id="layout-tab">
+		<div id="tab">
+			<div class="btn">
+				<li class="tab-btn show">题目1</li>
+				<li class="tab-btn">题目2</li>
+				<li class="tab-btn">题目3</li>
+				<li class="tab-btn">题目4</li>
+				<li class="tab-btn">题目5</li>
+			</div>
+				<div class="tab">
+				<pre>
+题目1： ajax 是什么？有什么作用？
+答：
+AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。
+Ajax的主要优势就是对整个页面的请求以异步的方式发送到服务器。而服务器不会用整个页面来响应请求，
+它会在后台处理请求，并且只更新页面中的一小部分。与此同时，用户还能继续浏览页面并与页面交互。
+				</pre>
+				
+			</div>
+			<div class="tab">
+				<pre>
+题目2： 前后端开发联调需要注意哪些事情？后端接口完成前如何 mock 数据？
+答:
+	1.前后端开发联调需要注意以下事情： 
+		约定数据：约定好页面需要的数据和数据类型
+		约定接口：约定接口的名称、请求的参数、相应的格式（成功或失败分别返回什么）
+		将约定好的内容整理成接口文档和规范
+	2.后端接口完成前如何 mock 数据？ 
+		可以使用server-mock或mock.js搭建模拟服务器，进行模拟测试
+		mock.js的github仓库
+		server-mock的github仓库
+		使用XAMPP等工具，编写PHP文件来进行测试
+				</pre>
+				
+			</div>
+			<div class="tab">
+				<pre>
+题目3：点击按钮，使用 ajax 获取数据，如何在数据到来之前防止重复点击?
+答：
+	方法一：
+	使用disabled属性，用来禁用input元素。被禁用的input元素既不可用，
+	也不可点击。
+	el.addEventListener("click",function(){  
+	this.disabled=true; 
+	ajax(); 
+	setTimeout(this.disabled=false,0);
+	});
+
+	方法二；
+	设置一个属性，在用户点击之前，为ture，代表可以点击按钮。
+	用户点击之后设定值为false，则用户不能点击按钮。当数据返回后，
+	再重新设定为true。
+	var locked = ture;
+	btn.addEventlistener("click",function(){
+	if(locked){
+	  locked = false;
+	  var xhr = new XMLHttpRequest();
+	  xhr.open();
+	  xhr.send();
+	  xhr.readystatechange = function(){
+	  	if(xhr.readySate == 4){
+		 	locked = ture;
+		}
+	  }
+	}else{
+ 	 renturn;
+	 }	
+	});
+				</pre>
+				
+			</div>
+			<div class="tab tab-block">
+				<pre>
+题目4：加载更多效果。
+				</pre>
+				<div id="addMore">
+					<ul id="addBox">
+							<li class="addli">内容1</li>
+							<li class="addli">内容2</li>
+					</ul>	
+					<a href="#" id="add">加载更多</a>
+				</div>
+			</div>
+			<div class="tab">
+				<pre>
+				</pre>
+				
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="jsM.js"></script>
+<script type="text/javascript" src="add.js"></script>
+</body>
+</html>

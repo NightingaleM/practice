@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tab切换与模态框</title>
+<style>
+	* {
+		box-sizing: border-box;
+	}
+	p, span, h1, h2, div, button, ul, li, pre {
+		margin: 0;
+		padding: 0;
+	}
+	li {
+		list-style: none;
+		display: inline-block;
+	}
+	pre {
+		padding-top: 20px;
+		padding-left: 20px;
+		font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New";
+		color: #e6db74;
+		
+	}
+	#layout-tab {
+		width: 70%;
+		min-width: 700px;
+		height: 1000px;
+		margin: 0 auto;
+		margin-top: 15px;
+		position: relative;
+		border: 2px solid;
+		padding: 6px;
+	}
+	#tab {
+		height: 90%;
+		/*border: 2px solid;*/
+	}
+	.btn {
+		width: 100%;
+		font-size: 0;
+		height: 10%;
+		/*background: #ccc;*/
+	}
+	.tab-btn {
+		width: 11.1111%;
+		font-size: 14px;
+		text-align: center;
+		height: 100%;
+		background: orange;
+		border: 1px solid;
+		border-top: 2px solid;
+		border-bottom: 2px solid;
+		line-height: 28px;
+		cursor: pointer;
+	}
+	.tab-btn:nth-child(1) {
+		border-left: 2px solid;
+	}
+	.tab-btn:nth-child(3) {
+		border-right: 2px solid;
+	}
+	.tab {
+		width: 100%;
+		border: 2px solid;
+		border-top: 0;
+		height: 100%;
+		display: none;
+		background-color: #000;
+	}
+	.tab-block {
+		display: block;
+	}
+	.show {
+		background-color: yellow;
+	}
+	.mot {
+		background-color: rgba(0, 0, 0, 0.2);
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+	}
+	.mot-body {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		border-radius: 4px;
+		width: 500px;
+		height: 200px;
+		background-color: lightyellow;
+		box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 18px 0 rgba(0, 0, 0, 0.8);
+	}
+	.mot span {
+		float: right;
+		font-size: 1.2em;
+		cursor: pointer;
+		padding: 5px;
+	}
+	.mot button {
+		float: right;
+		margin: 5px;
+	}
+	.mot h1 {
+		border-bottom: 1px solid;
+	}
+	.motbody {
+		margin-top: 5px;
+		height: 60%;
+	}
+	.disappear {
+		display: none;
+	}
+	</style>
+</head>
+<body>
+	<div id="layout-tab">
+		<div id="tab">
+			<div class="btn">
+				<li class="tab-btn">题外话</li>
+				<li class="tab-btn show">题目1</li>
+				<li class="tab-btn">题目2</li>
+				<li class="tab-btn">题目3</li>
+				<li class="tab-btn">题目4</li>
+				<li class="tab-btn">题目5</li>
+				<li class="tab-btn">题目6</li>
+				<li class="tab-btn">题目7</li>
+				<li class="tab-btn">题目8</li>
+			</div>
+				<div class="tab">
+				<pre>
+	第一次这么弄，不知道怎么写比较好；
+	不过是第一次嘛，就先这么些了，先试试嘛- -；
+	不知道老师看不看得舒服- -；
+	输出还是用的console.log；还是得去console里去看；
+	这个网址也是自己在新浪云上七里八里弄得一个；
+	想弄个个人网站，但是又啥都不会；
+	现在就勉强做个提交答案的地方好了- -；
+	啊，好像360打开这个网页看不了console.log里的东西，貌似是不支持let……
+	
+				</pre>
+				
+			</div>
+			<div class="tab tab-block">
+				<pre>
+
+//方法一：
+    let fnArr1 = [];
+    for (let i = 0; i < 10; i ++) {
+        fnArr1[i] =  function(){
+          return i;
+        };
+    }
+    console.log('方法1')
+    console.log( fnArr1[3]() );  //3
+    //形成块作用域
+// 方法二：
+    var fnArr2=[]
+    for(var i =0; i < 10; i++){
+      !function(n){
+        fnArr2[i] = function(){
+          return n;
+        }
+      }(i)
+    }
+    console.log('方法2')
+    console.log(fnArr2[3]())
+//方法三：
+    var fnArr3 = [];
+    for (var i = 0; i < 10; i ++) {
+        fnArr3[i] = (function(s){
+          return function(){
+            return s;
+          };
+        })(i);
+    }
+    console.log('方法3')
+    console.log( fnArr3[3]() );  //3
+				</pre>
+				
+			</div>
+			<div class="tab">
+				<pre>
+
+var Car = (function(){
+   var speed = 0;
+   function setSpeed(s){
+    speed = s
+   }
+   function getSpeed(){
+    console.log(speed)
+   }
+   function accelerate(){
+    speed += 10
+   }
+   function decelerate(){
+    speed -= 10
+   }
+   function getStatus(){
+    if(speed == 0){
+      console.log('stop')
+    }else{
+      console.log('running')
+    }
+   }
+   return {
+      setSpeed: setSpeed,
+      getSpeed:getSpeed,
+      accelerate:accelerate,
+      decelerate:decelerate,
+      getStatus:getStatus,
+   }
+})()
+Car.setSpeed(30);
+Car.getSpeed(); //30
+Car.accelerate();
+Car.getSpeed(); //40;
+Car.decelerate();
+Car.decelerate();
+Car.getSpeed(); //20
+Car.getStatus(); // 'running';
+Car.decelerate(); 
+Car.decelerate();
+Car.getStatus();  //'stop';
+//Car.speed;  //error
+				</pre>
+				
+			</div>
+			<div class="tab">
+				<pre>
+
+var a = 1;
+setTimeout(function(){
+    a = 2;
+    console.log(a);
+}, 0);
+var a ;
+console.log(a);
+a = 3;
+console.log(a);
+
+答：
+按照132的顺序出现
+由于使用了setTimeout，即便是延迟0毫秒，
+但是浏览器依旧会将setTimeout中的函数放置在代码最后，
+执行完前面的代码，再看时间是否到了，到了就运行，
+没到就再等等`
+				</pre>
+				
+			</div>
+			<div class="tab">
+				<pre>
+
+var flag = true;
+setTimeout(function(){
+    flag = false;
+},0)
+while(flag){}
+console.log(flag);
+
+答：
+立个flag根本停不下来……
+会一直卡在while循环里，无限循环，
+原因和上一题一样，setTimeout的第一个参数被放在代码的最后，
+所以在执行while循环时，flag为true，导致while无限循环
+后面的console.log也打印不出来
+在while中加一个console.log(flag)会一直打印出ture
+这个代码就不运行了，怕死机……
+
+				</pre>
+				
+			</div>
+			<div class="tab">
+				<pre>
+
+delayer: 0, delayer:1...（使用闭包来实现）
+for(var i=0;i<5;i++){
+  setTimeout(function(){
+         console.log('delayer:' + i );
+  }, 0);
+  console.log(i);
+}
+
+答:代码按顺序输出01234然后同时输出5个5
+
+!function(){
+  for(var i=0;i<5;i++){
+  !function (s){
+    setTimeout(function(){
+           console.log('delayer:' + s );
+      }, 0);
+    }(i)
+  }
+}()
+
+setTimeout是真不好用啊……这题的输出内容都到下面去了
+				</pre>
+				
+			</div>
+			<div class="tab">
+				<pre>
+console.log(getComputedStyle(document.getElementById("layout-tab")).height)
+console.log(getComputedStyle(document.getElementById("layout-tab")).width)
+				</pre>
+				
+			</div>
+			<div class="tab">
+				<pre>
+JavaScript提供四个URL的编码/解码方法。
+decodeURI()
+decodeURIComponent()
+encodeURI()
+encodeURIComponent()
+区别
+encodeURI方法不会对下列字符编码
+
+ASCII字母
+数字
+~!@#$&amp;*()=:/,;?+'
+encodeURIComponent方法不会对下列字符编码
+
+ASCII字母
+数字
+~!*()'
+
+如果你需要编码整个URL，然后需要使用这个URL，那么用encodeURI。 
+当你需要编码URL中的参数的时候，那么encodeURIComponent是最好方法。
+参数中的 "/" 可以编码，如果用encodeURI要出问题，因为后面的/是需要编码的
+
+<!-- 其实还有个escape的编码方法，
+escape 在处理 0xff 之外字符的时候，是直接使用字符的 unicode 在前面加上一个 「%u」
+Escape 的编码有一个弊端在于，它后面是 4 位 16 进制，
+故不支持基本多文种平面（BMP）外的字符（unicode 大于 0xffff）的字符。
+不过如果没有必要，不要使用 escape。【来自知乎】 -->
+
+				</pre>
+				
+			</div>
+			<div class="tab">
+				<pre>
+!function isAndroid(){
+  if(/Android/i.test(navigator.userAgent)){
+    return console.log('is Android')
+  }else{
+    return console.log('is not Android')
+  }
+}()
+!function isIphone(){
+  if(/Iphone/i.test(navigator.userAgent)){
+    return console.log('is Iphone')
+  }else{
+    return console.log('is not Iphone')
+  }
+}()
+!function isIpad(){
+  if(/Ipad/i.test(navigator.userAgent)){
+    return console.log('is Ipad')
+  }else{
+    return console.log('is not Ipad')
+  }
+}()
+!function isIOS(){
+  if(/IOS/i.test(navigator.userAgent)){
+    return console.log('is IOS')
+  }else{
+    return console.log('is not IOS')
+  }
+}()
+				</pre>
+				
+			</div>
+
+		</div>
+	</div>
+	<div class="mot disappear">
+		<div class="mot-body">
+			<span>x</span>
+			<h1>模态框标题</h1>
+			<div class="motbody">
+				<p>点确定我就关了</p>
+				<p>点x也能关</p>
+			</div>
+			<button id="closebtn">确定</button>
+			<button>取消</button>
+		</div>
+	</div>
+<script type="text/javascript" src="js.js"></script>
+<script type="text/javascript" src="answer.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式</title>
+	<style>
+		table {
+			border: 1px solid;
+			border-radius: 3px;
+			margin-top: 13px;
+			border-collapse: collapse;
+		}
+		tr:nth-child(2n) {
+			background-color: #c1c1c1;
+
+		}
+
+	</style>
+</head>
+<body>
+	<h1>正则表达式</h1>
+	<table>
+		<th colspan="2">常用的元字符</th>
+		<tr>
+			<th>代码</th>
+			<th>说明</th>
+		</tr>
+		<tr>
+			<td>.</td>
+			<td>匹配除换行符以外的任意字符</td>
+		</tr>
+		<tr>
+			<td>\w</td>
+			<td>匹配<b>字母</b>或<b>数字</b>或<b>下划线</b></td>
+		</tr>
+		<tr>
+			<td>\s</td>
+			<td>匹配任意的空白符</td>
+		</tr>
+		<tr>
+			<td>\d</td>
+			<td>匹配数字</td>
+		</tr>
+		<tr>
+			<td>\b</td>
+			<td>匹配单词的开始或结束</td>
+		</tr>
+		<tr>
+			<td>^</td>
+			<td>匹配字符串的开始</td>
+		</tr>
+		<tr>
+			<td>$</td>
+			<td>匹配字符串的结束</td>
+		</tr>
+	</table>
+
+	<table>
+		<th>常用的限定符</th>
+		<tr>
+			<th>代码</th>
+			<th>说明</th>
+		</tr>
+		<tr>
+			<td>*</td>
+			<td>重复零次或更多次数</td>
+		</tr>
+		<tr>
+			<td>+</td>
+			<td>重复一次或更多次数</td>
+		</tr>
+		<tr>
+			<td>?</td>
+			<td>重复0次或一次</td>
+		</tr>
+		<tr>
+			<td>{n}</td>
+			<td>重复n次</td>
+		</tr>
+		<tr>
+			<td>{n,}</td>
+			<td>重复n次或更多</td>
+		</tr>
+		<tr>
+			<td>{n,m}</td>
+			<td>重复n次到m次</td>
+		</tr>
+	</table>
+	
+	<table>
+		<th>常用的反义代码</th>
+		<tr>
+			<th>代码</th>
+			<th>说明</th>
+		</tr>
+		<tr>
+			<td>\W</td>
+			<td>匹配任意不是字母，数字，下划线，汉字的字符</td>
+		</tr>
+		<tr>
+			<td>\S</td>
+			<td>匹配任意不是空白符的字符</td>
+		</tr>
+		<tr>
+			<td>\D</td>
+			<td>匹配任意非数字的字符</td>
+		</tr>
+		<tr>
+			<td>\B</td>
+			<td>匹配不是代词开头或结束的位置</td>
+		</tr>
+		<tr>
+			<td>[^x]</td>
+			<td>匹配除了x以外的任意字符</td>
+		</tr>
+		<tr>
+			<td>[^aeiou]</td>
+			<td>匹配除了aeiou这几个字母以外的任意字符</td>
+		</tr>
+	</table>
+</body>
+</html>
