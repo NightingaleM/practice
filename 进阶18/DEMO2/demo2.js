@@ -2,7 +2,7 @@ var picIndex = 1//图片编号
 var itemArr = []//每列高度
 var loadImgSrc = 'http://jrgzuoye.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS9-jqueryajax/loading.gif'
 
-appendImg(makeImg(18))//打开浏览器加载18张图片并按照瀑布流规则放在页面中
+appendImg(makeImg(24))//打开浏览器加载18张图片并按照瀑布流规则放在页面中
 
 //当滚到页面底部时，加载更多图片
 $(window).on('scroll', function () {
